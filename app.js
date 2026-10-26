@@ -59,7 +59,7 @@ function drawTimes(){const slots=data.slots.filter(x=>dateKey(x.starts_at)===sel
  $$('[data-slot]').forEach(b=>b.addEventListener('click',()=>{selectedSlot=b.dataset.slot;drawTimes();}));bind('#continue','click',showSharedNotice);
 }
 function showSharedNotice(){
- openModal(modalHead('방문 안내')+'<p class="shared-notice">다른 팀과 같이 볼 수도 있습니다.</p><p class="small">노쇼 방지를 위한 예약금 1만원이 있습니다.<br>신청 당일 내 입금해 주세요.</p><button id="shared-continue" class="primary wide">확인하고 신청</button>');
+ openModal(modalHead('방문 안내')+`<p class="shared-notice">다른 팀과 같이 볼 수도 있습니다.</p><p class="small">노쇼 방지를 위한 예약금 ${money(data.settings.amount)}이 있습니다.<br>신청 당일 내 입금해 주세요.</p><button id="shared-continue" class="primary wide">확인하고 신청</button>`);
  bind('#shared-continue','click',showBookingForm);
 }
 function showBookingForm(){const s=data.settings,slot=data.slots.find(x=>x.id===selectedSlot);if(!slot)return;
